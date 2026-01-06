@@ -2,10 +2,10 @@ from cryptography.fernet import Fernet
 import os
 import json
 
-# Kita ambil lokasi folder tempat file backend.py ini berada
+# Untuk mengambil lokasi folder tempat file backend.py ini berada
 FOLDER_PROJECT = os.path.dirname(os.path.abspath(__file__))
 
-# Kita gabungkan lokasi folder itu dengan nama file
+# menggabungkan lokasi folder itu dengan nama file
 VAULT_FILE = os.path.join(FOLDER_PROJECT, "secret.key")
 
 # ------------------------------------------------
@@ -50,7 +50,7 @@ def enkripsi_file(path_file):
         with open(path_file, "wb") as file:
             file.write(data_terenkripsi)
             
-        # KITA PRINT LOKASI FILE KUNCINYA SUPAYA JELAS
+        # PRINT LOKASI FILE KUNCINYA SUPAYA JELAS
         print(f" SUKSES! File dikunci.")
         print(f" File 'secret.key' disimpan di: {VAULT_FILE}")
         
@@ -64,7 +64,7 @@ def dekripsi_file(path_file):
     vault = muat_vault()
     
     if nama_file not in vault:
-        # Kita lempar error supaya muncul di GUI
+        # lempar error supaya muncul di GUI
         raise Exception(f"Kunci untuk '{nama_file}' tidak ditemukan di database!")
 
     key_string = vault[nama_file]
@@ -81,9 +81,10 @@ def dekripsi_file(path_file):
         with open(path_file, "wb") as file:
             file.write(data_asli)
             
-        print(f" SUKSES! File dibuka.")
+        print(f"SUKSES! File dibuka.")
 
     except Exception as e:
-        print(f" Error Dekripsi: {e}")
+        print(f"Error Dekripsi: {e}")
 
         raise e
+
