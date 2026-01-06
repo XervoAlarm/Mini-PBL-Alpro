@@ -2,7 +2,6 @@ from cryptography.fernet import Fernet
 import os
 import json
 
-# --- BAGIAN INI YANG DIPERBAIKI (FORCE PATH) ---
 # Kita ambil lokasi folder tempat file backend.py ini berada
 FOLDER_PROJECT = os.path.dirname(os.path.abspath(__file__))
 
@@ -52,11 +51,11 @@ def enkripsi_file(path_file):
             file.write(data_terenkripsi)
             
         # KITA PRINT LOKASI FILE KUNCINYA SUPAYA JELAS
-        print(f"🔒 SUKSES! File dikunci.")
-        print(f"📂 File 'secret.key' disimpan di: {VAULT_FILE}")
+        print(f" SUKSES! File dikunci.")
+        print(f" File 'secret.key' disimpan di: {VAULT_FILE}")
         
     except Exception as e:
-        print(f"❌ Error Enkripsi: {e}")
+        print(f" Error Enkripsi: {e}")
         # Lemparkan error ke main.py supaya muncul di popup
         raise e 
 
@@ -82,8 +81,9 @@ def dekripsi_file(path_file):
         with open(path_file, "wb") as file:
             file.write(data_asli)
             
-        print(f"🔓 SUKSES! File dibuka.")
+        print(f" SUKSES! File dibuka.")
 
     except Exception as e:
-        print(f"❌ Error Dekripsi: {e}")
+        print(f" Error Dekripsi: {e}")
+
         raise e
